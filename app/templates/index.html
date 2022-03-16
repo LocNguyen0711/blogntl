@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+<ul>    
+    {% block user-items %}
+    <li><a href="{% url 'blog:user_profile' %}">Profile</a></li>
+    <li><a href="{% url 'blog:sign_out' %}">Sign Out</a></li>
+    {% endblock %}
+</ul>

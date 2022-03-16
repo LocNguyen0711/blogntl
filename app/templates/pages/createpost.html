@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block container %}
+<form action="{% url 'blog:new_post' %}" method="POST" class="fUser">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="post" value="Post" class="btnSignin">
+</form>
+{% endblock %}

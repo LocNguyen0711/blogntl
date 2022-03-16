@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'icon/css/all.css' %}">
+    {% block title %}<title>Welcome to my blog | Blogs</title>{% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    {% block header %}
+    <div class="header">
+        <div class="nav">
+            <ul class="menu">
+                <li><a href="{% url 'blog:index' %}">Home</a></li>
+                <li><a href="{% url 'blog:new_post' %}">New Post</a></li>
+                <li><a href="{% url 'blog:user_profile' %}">Profile</a></li>
+                <li class="iUser">
+                    <a href="#" class="user-icon fas fa-user"></a>
+                    <ul class="user-items">
+                        {% block user-items %}
+                        <li><a href="{% url 'blog:sign_in' %}">Sign In</a></li>
+                        <li><a href="{% url 'blog:sign_up' %}">Sign Up</a></li>
+                        {% endblock %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+    <div class="slider">
+        {% block slider %}
+        {% endblock %}
+    </div>
+    <div class="container">
+        {% block container %}
+        <ul class="posts">
+            {% for post in posts %}
+            <div class="content">
+                <li><span class="author">{{post.author.get_full_name}}</span></li>
+                <li><span class="title">{{post.title}}</span></li>
+                <br>
+                <li><span class="description">{{post.description}}</span></li>
+                <br>
+                <li><span class="body">{{post.body}}</span></li>
+                <br>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </div>
+    <div class="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+    {% endblock %}
+</body>
+<script src="{% static 'js/scripts.js' %}"></script>
+
+</html>

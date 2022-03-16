@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}<title>BlogNTL | Create Your Account</title>{% endblock %}
+{% block user-items %}
+    <li><a href="{% url 'blog:sign_in' %}">Sign In</a></li>
+    <li><a href="{% url 'blog:sign_up' %}">Sign Up</a></li>
+{% endblock %}
+{% block container %}
+<form method="POST" action="{% url 'blog:sign_up' %}" class="fUser">
+    <label class="title">Sign Up</label>
+    {% csrf_token %}
+    {{form}}
+    <span>Do you already have an account? <a href="{% url 'blog:sign_in' %}">Sign In</a></span>
+    <input type="submit" value="Sign Up" class="btnSignup">
+</form>
+{% endblock %}

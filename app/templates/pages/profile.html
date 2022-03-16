@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block container %}
+<ul class="content user-info">
+    <li><span>Username: </span><a>{{request.user.username}}</a></li>
+    <li><span>Full name: </span><a>{{request.user.get_full_name}}</a></li>
+    <li><span>Email: </span><a>{{request.user.email}}</a></li>
+    <li><span>Change your password: </span><a href="{% url 'blog:forgot_password' %}">Click here!</a></li>
+
+</ul>
+{% endblock %}
